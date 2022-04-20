@@ -8,14 +8,14 @@
 
 <html lang="pt-br">
     <head> 
-        <meta charset=”UTF-8”>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" media = "screen and (max-width: 425px)" href="../styles/styles-devices-width-lesser-425.css">
         <link rel="stylesheet" media = "screen and (min-width: 425px) and (max-width: 768px)" href="../styles/styles-devices-width-425-768.css">
         <link rel="stylesheet" media = "screen and (min-width: 768px)" href="../styles/styles-devices-width-greater-768.css">
         <title>Ciência Aplicada com Python</title>
-        <link rel = "icon" href = "images/ciência-aplicada-com-python-icon.png" type = "image/x-icon">
+        <link rel = "icon" href = "../images/ciência-aplicada-com-python-icon.png" type = "image/x-icon">
         <meta name="description" content="Artigos com respostas científicas para perguntas com inspiração no dia a dia e algoritmos em Python">
         <meta name="keywords" content="ciência, algoritmo, mecânica, medição, Python">
         <meta name="author" content="Jefferson David Santos e Silva">
@@ -32,7 +32,7 @@
     <body>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4297585975559515"
      crossorigin="anonymous"></script>
-        <div id = "menu_site_title">       
+        <div id = "menu-site-title">       
             <div id = "menu">
                 <a href="../index.html">Home</a>
                 <a href="../todos-list.html">Todos</a>
@@ -40,12 +40,12 @@
                 <a href="../mecanica-list.html">Mecânica</a>
             </div>
 
-            <div id="site_title">
+            <div id="site-title">
                 <h1>Ciência Aplicada com Python</h1> 
             </div>
         </div>
         
-        <article id="page_text">
+        <article id="page-text">
             <header>
                 <h1>Quanto tempo demora uma ultrapassagem?</h1> 
                 <p>
@@ -71,7 +71,7 @@
                 <p>
                     Recorreremos ao seguinte modelo para encontrar a resposta:
                 </p>
-                <img src="../images/quanto-tempo-demora-uma-ultrapassagem-situacao-inicial.jpg" alt="Situação inicial identificando dois carros movendo-se na mesma velocidade constante de 60 km/h. O primeiro carro, cujo comprimento é dc1, está atrás do segundo, cujo comprimento é dc2, à uma distância dc1c2." id = "image_width">
+                <img src="../images/quanto-tempo-demora-uma-ultrapassagem-situacao-inicial.jpg" alt="Situação inicial identificando dois carros movendo-se na mesma velocidade constante de 60 km/h. O primeiro carro, cujo comprimento é dc1, está atrás do segundo, cujo comprimento é dc2, à uma distância dc1c2." id = "image-width">
                 <p>
                     Dois veículos, <em>C<sub>1</sub></em> e <em>C<sub>2</sub></em>, movem-se com velocidade constante na mesma direção e sentido, da esquerda para a direita. Chamemos este cenário de <b>situação inicial</b>.
                     Os veículos <em>C<sub>1</sub></em> e <em>C<sub>2</sub></em> têm comprimento <em>d<sub>c<sub>1</sub></sub></em> e <em>d<sub>c<sub>2</sub></sub></em>, respectivamente. 
@@ -80,7 +80,7 @@
                 <p>
                     Após a ultrapassagem começar, vamos considerar que ela termina quando o veículo <em>C<sub>1</sub></em> estiver à frente do veículo <em>C<sub>2</sub></em> de uma distância igual a <em>d<sub>c<sub>1</sub>c<sub>2</sub></sub></em>. Chamemos este cenário de <b>situação final</b>:
                 </p>
-                <img src="../images/quanto-tempo-demora-uma-ultrapassagem-situacao-final.jpg" alt="Situação final identificando os dois carros da situação inicial após a ultrapassagem movendo-se na mesma velocidade constante de 60 km/h. O primeiro carro, cujo comprimento é dc2, está à frente do segundo, cujo comprimento é dc1, à uma distância dc1c2." id = "image_width">
+                <img src="../images/quanto-tempo-demora-uma-ultrapassagem-situacao-final.jpg" alt="Situação final identificando os dois carros da situação inicial após a ultrapassagem movendo-se na mesma velocidade constante de 60 km/h. O primeiro carro, cujo comprimento é dc2, está à frente do segundo, cujo comprimento é dc1, à uma distância dc1c2." id = "image-width">
                 <p>
                     Vamos desconsiderar o tempo que o carro leva para entrar na contramão, o atrito do asfalto, a resistência do vento e outras variáveis.
                 </p>
@@ -105,7 +105,7 @@
                     $$t = \frac{\frac{d_{c_1} + d_{c_2} + 2 \times d_{c_1c_2}\; \text{km}}{1000}}{\Delta v\; \text{km/h}} \times \frac{3.600\; \text{s}}{\text{h}} \\ t = \frac{d_{c_1} + d_{c_2} + 2 \times d_{c_1c_2}}{\Delta v} \times 3,6\; \text{s}$$
                 </p>
             </section>
-            <section id = "algoritmo_section">
+            <section id = "algoritmo-section">
                 <h3>O algoritmo</h3>
                 <p>Como base de um sistema com interfaceamento com o usuário, o algoritmo a ser utilizado deve requisitar os valores de cada um dos parâmetros de entrada.</p>
                 <p>O modelo do sistema estabelece que os parâmetros de entrada devem ser:</p>
@@ -118,7 +118,7 @@
                 <p>Com os valores dos parâmetros anteriores informados, o tempo de duração deve ser calculado e retornado ao usuário.</p>
                 <p>Como adicional, o usuário deve poder reexecutar o algoritmo o número de vezes desejado em sequência, informando quando não é mais necessário.</p>
             </section>
-            <section id = "colete_dados_em_campo_section">
+            <section id = "colete-dados-em-campo-section">
                 <h3>Colete os dados em campo</h3>
                 <p>
                     Na prática, os valores das grandezas da fórmula anterior podem ser coletados da seguinte maneira:
@@ -169,12 +169,12 @@
                     </li>
                 </ul>
             </section>
-            <section id = "aperte_o_play_section">
+            <section id = "aperte-o-play-section">
                 <h3>Aperte o play!</h3>
                 <p>Simule o algoritmo descrito utilizando a linguagem de programação Python:</p>
                 <iframe src="https://trinket.io/embed/python/7ec8ec9a3e?showInstructions=true" width = 99.5% height = 600em frameborder = 10em marginwidth = 0em marginheight = 0em allowfullscreen title = "Algoritmo em Python"></iframe>
             </section>
-            <section id = "conclusao_section">
+            <section id = "conclusao-section">
                 <h3>Conclusão</h3>
                 <p>
                     Como exemplo, suponha os seguintes valores para as grandezas:

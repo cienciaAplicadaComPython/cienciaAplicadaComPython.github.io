@@ -1,8 +1,8 @@
 @font-face{
-    font-family: â€œvijayaâ€;       
+    font-family: “vijaya”;       
     font-style: normal;       
     font-weight: 400;       
-    src: local(â€˜vijayaâ€™), url(vijaya.ttf);         
+    src: local(‘vijaya’), url(vijaya.ttf);         
 }
 
 *{
@@ -22,7 +22,7 @@ th{
     background-color: #000000;
 }
 
-#menu_site_title{
+#menu-site-title{
     top: 0em;
     left: 0em;
     position: absolute;
@@ -31,7 +31,7 @@ th{
     width: 100%;
 }
 
-#site_title{
+#site-title{
     flex: 3;
     background-color: #000000;
     text-align: center;
@@ -60,15 +60,15 @@ th{
     background-color: #0000FF;
 }
 
-.articles_list_items {
+.articles-list-items {
     color: #000000;
 }
 
-.articles_list_items:hover {
+.articles-list-items:hover {
     color: #0000FF;
 }
 
-#page_text{
+#page-text{
     background-color: #FFFFFF;
     top: 5em;
     left: 0em;
@@ -80,7 +80,7 @@ th{
     color: #000000;
 }
 
-#page_text #algoritmo_section{
+#page-text #algoritmo-section{
     background-color: #EB7D5B;
     border-style: none none none solid;
     border-color: #FF0000;
@@ -88,7 +88,7 @@ th{
     border-width: 1em;
 }
 
-#page_text #colete_dados_em_campo_section{
+#page-text #colete-dados-em-campo-section{
     background-color: #FED23F;
     border-style: none none none solid;
     border-color: #FFFF00;
@@ -96,7 +96,7 @@ th{
     border-width: 1em;
 }
 
-#page_text #aperte_o_play_section{
+#page-text #aperte-o-play-section{
     background-color: #B5D33D;
     border-style: none none none solid;
     border-color: #00FF00;
@@ -104,7 +104,7 @@ th{
     border-width: 1em;
 }
 
-#page_text #conclusao_section{
+#page-text #conclusao-section{
     background-color: #6CA2EA;
     border-style: none none none solid;
     border-color: #0000FF;
@@ -112,6 +112,6 @@ th{
     border-width: 1em;
 }
 
-#image_width{
+#image-width{
     width: 50%;
 }
