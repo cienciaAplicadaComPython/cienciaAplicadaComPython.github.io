@@ -1,11 +1,5 @@
 <!DOCTYPE html>
 
-<!--
-    This represents an article.
-    Author: Jefferson David Santos e Silva
-    Email: j.davidss@hotmail.com
--->
-
 <html lang="pt-br">
     <head> 
         <meta charset="UTF-8">
@@ -19,14 +13,9 @@
         <meta name="description" content="Artigos com respostas científicas para perguntas com inspiração no dia a dia e algoritmos em Python">
         <meta name="keywords" content="ciência, algoritmo, mecânica, medição, Python">
         <meta name="author" content="Jefferson David Santos e Silva">
-        <!--
-            The following a JavaScript display engine for mathematics that works in all browsers.
-            For more information, refer to https://www.mathjax.org/#gettingstarted
-        -->
-        <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, "HTML-CSS": { availableFonts: ["TeX"] } });
-        </script>
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML"></script>
+        <!--The following a JavaScript display engine for mathematics that works in all browsers.
+        For more information, refer to https://www.mathjax.org/#gettingstarted-->
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </head>
     
     <body>
@@ -127,7 +116,7 @@
                 </table>
                 <p>
                     Outras unidades são derivadas das unidades fundamentais do SI.
-                    Por exemplo, a grandeza força é representada pela unidade newton (N) a qual equivale a kg$\times$m/s.
+                    Por exemplo, a grandeza força é representada pela unidade newton (N) a qual equivale a kg\(\cdot\)m/s.
                 </p>
             </section>
             <section>
@@ -148,22 +137,22 @@
                     <tr>
                         <td>Polegada</td>
                         <td>in</td>
-                        <td>$0,0254$ m</td>
+                        <td>\(0,0254\) m</td>
                     </tr>
                     <tr>
                         <td>Pés</td>
                         <td>ft</td>
-                        <td>$0,3048$ m</td>
+                        <td>\(0,3048\) m</td>
                     </tr>
                     <tr>
                         <td>Jardas</td>
                         <td>yd</td>
-                        <td>$0,9144$ m</td>
+                        <td>\(0,9144\) m</td>
                     </tr>
                     <tr>
                         <td>Milha</td>
                         <td>mi</td>
-                        <td>$1.609,344$ m</td>
+                        <td>\(1.609,344\) m</td>
                     </tr>
                     <tr>
                         <td colspan = '3' style = 'text-align: center;'>Área</td>
@@ -171,12 +160,12 @@
                     <tr>
                         <td>Acre</td>
                         <td>mi</td>
-                        <td>$4.046,86$ m<sup>2</sup></td>
+                        <td>\(4.046,86\) m<sup>2</sup></td>
                     </tr>
                     <tr>
                         <td>Milha quadrada</td>
                         <td>sq mi</td>
-                        <td>$2.589.988,110336$ m<sup>2</sup></td>
+                        <td>\(2.589.988,110336\) m<sup>2</sup></td>
                     </tr>
                     <tr>
                         <td colspan = '3' style = 'text-align: center;'>Volume</td>
@@ -184,17 +173,17 @@
                     <tr>
                         <td>Onças</td>
                         <td>oz</td>
-                        <td>$0,0000295735$ m<sup>3</sup></td>
+                        <td>\(0,0000295735\) m<sup>3</sup></td>
                     </tr>
                     <tr>
                         <td>Pinta</td>
                         <td>pt</td>
-                        <td>$0,000473176$ m<sup>3</sup></td>
+                        <td>\(0,000473176\) m<sup>3</sup></td>
                     </tr>
                     <tr>
                         <td>Galão</td>
                         <td>gal</td>
-                        <td>$0,00378541$ m<sup>3</sup></td>
+                        <td>\(0,00378541\) m<sup>3</sup></td>
                     </tr>
                     <tr>
                         <td colspan = '3' style = 'text-align: center;'>Massa</td>
@@ -202,17 +191,17 @@
                     <tr>
                         <td>Libras</td>
                         <td>lb</td>
-                        <td>$0,4536$ kg</td>
+                        <td>\(0,4536\) kg</td>
                     </tr>
                     <tr>
                         <td>Stones</td>
                         <td>st</td>
-                        <td>$6,3503$ kg</td>
+                        <td>\(6,3503\) kg</td>
                     </tr>
                     <tr>
                         <td>Tonelada</td>
                         <td>ton</td>
-                        <td>$1.016,0469$ kg</td>
+                        <td>\(1.016,0469\) kg</td>
                     </tr>
                 </table>
             </section>
@@ -250,12 +239,12 @@
                 <p>
                     Na prática, os valores das grandezas representados em diferentes unidades podem ser convertidos utilizando a seguinte fórmula
                     $$u_\text{final} = c \times u_\text{original},$$
-                    na qual $u_\text{original}$ e $u_\text{final}$ são as medições da grandeza nas unidades original e final, respectivamente, e $c$ representa o coeficiente de conversão entre as unidas original e final, nesta ordem.
+                    na qual \(u_\text{original}\) e \(u_\text{final}\) são as medições da grandeza nas unidades original e final, respectivamente, e \(c\) representa o coeficiente de conversão entre as unidas original e final, nesta ordem.
                 </p>
                 <p>
-                    Como exemplo, para convertermos $3$ m em pés devemos fazer
+                    Como exemplo, para convertermos \(3\) m em pés devemos fazer
                     $$u_\text{pés} \approx 3.2808 \times 3 \implies u_\text{pés} \approx 9,8425$$
-                    permitindo concluir que $3$ m equivalem aproximadamente a $9,8425$ pés.
+                    permitindo concluir que \(3\) m equivalem aproximadamente a \(9,8425\) pés.
                 </p>
                 <p>
                     O uso do algoritmo implementado contribui para o cálculo quase instantâneo entre as conversões entre as unidades bastando informar o valor da medição e unidade original e a unidade final.
