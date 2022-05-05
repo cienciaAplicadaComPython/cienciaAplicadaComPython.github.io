@@ -120,7 +120,7 @@ th{
     width: 100%;
     z-index: 998;
     bottom: 0em;
-    border-radius: 1em;
+    border-radius: 1em 1em 0em 0em;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -137,7 +137,7 @@ th{
     background: #26619c;
     cursor: pointer;
     align-self: normal;
-    border-radius: 0em 1em 1em 0em;
+    border-radius: 0em 1em 0em 0em;
 }
   
 @media screen and (max-width: 600px) {
