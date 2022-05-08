@@ -29,7 +29,7 @@ window.onload = () => {
     if (shouldShowPopup(storageType)) {
         setTimeout(() => {
             consentPopup.classList.remove('hidden');
-        }, 60*1000);
+        }, 1000);
     }
 
 };
