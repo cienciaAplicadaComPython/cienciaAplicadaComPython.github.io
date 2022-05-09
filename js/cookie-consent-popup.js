@@ -11,7 +11,7 @@ const cookieStorage = {
     }
 }
 
-const storageType = localStorage;
+const storageType = sessionStorage;
 const consentPropertyName = 'cienciaAplicadaComPython-cookie-consent';
 const shouldShowPopup = () => !storageType.getItem(consentPropertyName);
 const saveToStorage = () => storageType.setItem(consentPropertyName, true);
