@@ -52,13 +52,14 @@
                 <h3>Introdução</h3> 
                 <p>
                     Você já se imaginou perdido em um deserto?
-                    Acho que um bom manual de sobrevivência deveria ter esse item um sua lista.
+                    Como você voltaria para o ponto de origem?
+                    Um bom manual de sobrevivência deveria ter esse item um sua lista.
                 </p> 
                 <p>
                     Pense que você está em frente a um deserto. Atrás tem uma cidade e você ainda não está perdido.
                     Ótimo!
                     Porém, você deseja caminhar ou aventurar-se pelo deserto mas preocupa-se em como retornar à cidade.
-                    Você não tem o velho barbante para te ajudar mas contém material para anotação e uma calculadora.
+                    Você não tem aquele velho barbante para te ajudar mas contém material para anotação e uma calculadora.
                 </p>
                 <p>
                     Vamos abordar uma estratégia que pode ser utilizada para você entrar no deserto e voltar à cidade.
@@ -69,13 +70,91 @@
                 <p>
                     O deserto não apresenta um ponto de referência para auxiliar na orientação.
                     Assim, não temos um ponto para ser utilizado como "norte".
+                    A nossa origem é totalmente perdida de vista assim que começamos a explorar o deserto.
                 </p>
                 <p>
                     Também não possuimos uma bússola. Somente um material para anotação e uma calculadora.
                 </p>
-                <mark>
-                    Trabalho em progresso.
-                </mark>
+                <p>
+                    No fim, o seu item mais importante será a sua orientação espacial e imaginação.
+                </p>
+                <p>
+                    Para uma análise coerente, considere que o seu deslocamento adentro do deserto segue o padrão de vetores descrito em seguida.
+                </p>
+                <p>
+                    Cada vetor seguinte tem a sua origem na extremidade do vetor anterior.
+                    Em comparação com o plano cartesiano, o seu corpo será sempre a origem \(o\), o eixo das abcissas cresce positivamente à sua frente e o eixo das ordenadas cresce positivamente à sua esquerda.  
+                </p>
+                <p>    
+                    Por exemplo, seja o vetor do início da exploração dado por
+                    $$\overrightarrow{d_0} = 3\overrightarrow{x} + 5\overrightarrow{y}$$
+                    significando, por exemplo, que você moveu-se por \(3\) m para a sua frente e \(5\) m para a sua esquerda.                 
+                </p>
+                <p>
+                    Ao final do movimento, posicione-se de maneira semelhante à antes de iniciar o movimento.
+                    Para o seu segundo movimento, as direções serão as mesmas: o eixo das abscissas cresce positivamente à sua frente e o eixo das ordenadas cresce positivamente à sua esquerda.
+                    O novo vetor de deslocamento será representado em relação à essa nova direção.
+                </p>
+                <p>
+                    O vetor seguinte seria, por exemplo,
+                    $$\overrightarrow{d_1} = 5\overrightarrow{y}$$
+                    significando que houve um deslocamento de \(5\) à sua esquerda.
+                </p>
+                <p>
+                    Pela maneira como nos orientamos, as coordenadas do vetor apontando para a origem a partir do ponto final do deslocamento podem ser calculadas por meio da soma das coordenadas de cada um dos vetores de deslocamento:
+                    $$\overrightarrow{d_{o}} = - 3\overrightarrow{x} - 10\overrightarrow{y}$$
+                    Ou seja, para retornarmos ao início da exploração, basta andar \(3\) metros para trás e \(10\) para a direita.
+                </p>
+            </section>
+            <section id = "algoritmo-section">
+                <h3>O algoritmo</h3>
+                <p>
+                    O seguinte código retorna um vetor único apontando para a origem do início da exploração do deserto.
+                    Os dados de entrada são os vetores que descrevem o seu deslocamento de acordo com o modelo apresentado anteriormente.
+                </p>
+                <p>
+                    A origem do início da exploração é a origem do plano cartesiano e os vetores são desenhados no plano para demonstrar a eficácia do método.
+                </p>
+            </section>
+            <section id = "colete-dados-em-campo-section">
+                <h3>Colete os dados em campo</h3>
+                <p>
+                    As componentes dos vetores devem ser descritas como explicado anteriormente. 
+                </p>
+                <p>
+                    Procure atentar-se ao padrão de medida de comprimento.
+                    Mantenha a mesma referência entre os vetores. 
+                </p>
+                <p>
+                    Você pode recorrer à seguinte fórmula para converter as componentes dos vetores entre as formas polar e retangular:
+                    $$\overrightarrow{d}_{\text{pol}} = \sqrt{x^2 + y^2} \angle{\arctan\left(\frac{y}{x}\right)}$$
+                    $$\overrightarrow{d}_{\text{rec}} = |\overrightarrow{d}_{\text{pol}}|\times\cos\left(\theta\right)\cdot\overrightarrow{x} + |\overrightarrow{d}_{\text{pol}}|\times\sin\left(\theta\right)\cdot\overrightarrow{y}$$
+                </p>
+            </section>
+            <section id = "aperte-o-play-section">
+                <h3>Aperte o play!</h3>
+                <p>Simule o algoritmo descrito utilizando a linguagem de programação Python:</p>
+                <iframe src="https://trinket.io/embed/python/fa8a95d849" width = 99.5% height = 600em frameborder = 10em marginwidth = 0em marginheight = 0em allowfullscreen title = "Algoritmo em Python"></iframe>
+            </section>
+            <section id = "conclusao-section">
+                <h3>Conclusão</h3>
+                <p>
+                    Como exemplo, suponha as seguintes coordenadas para os vetores de deslocamento:
+                    $$(x,y) = (15,10)$$
+                    $$(x,y) = (0,20)$$
+                    $$(x,y) = (0,10)$$
+                    $$(x,y) = (-5,15)$$
+                    $$(x,y) = (15,-20)$$
+                </p>
+                <p>
+                    Introduzindo tais coordenadas no algoritmo, o vetor abaixo informando o deslocamento necessário para retornar à origem é retornado:
+                    $$(x,y) = (25,35)$$
+
+                </p>
+                <p>
+                    Se os valores anteriores representassem as distâncias percorridas em metros, seriamos capazes de retornar ao ponto de início da jornada mesmo que não conseguissemos vê-lo.
+                    Permitindo confirmar que até em um em deserto em que nada poderia ser utilizado como o "norte", ainda conseguiríamos retornar à origem e não ficar perdidos.
+                </p>
             </section>
         </article>
         
