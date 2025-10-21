@@ -102,8 +102,8 @@
 <body>
   <canvas id="fx"></canvas>
   <div class="card" role="region" aria-label="Roleta do bebê">
-    <h1>Roleta do Bebê 👶✨</h1>
-    <p class="subtitle">Brinque com os amigos no WhatsApp: toque em "Girar roleta" e compartilhe o resultado!</p>
+    <h1>Roleta do Bebê 👶👧</h1>
+    <p class="subtitle">Toque em "Girar roleta" e compartilhe o resultado!</p>
 
     <div class="arena">
       <div class="wheel-wrap">
@@ -113,27 +113,21 @@
       </div>
       <div class="controls">
         <button id="spinBtn" aria-label="Girar a roleta">🎯 Girar roleta</button>
-        <button id="shareBtn" class="secondary" aria-label="Compartilhar resultado">📤 Compartilhar</button>
-        <button id="copyBtn" class="secondary" aria-label="Copiar texto para WhatsApp">📋 Copiar texto</button>
       </div>
       <div id="result" class="result" aria-live="assertive"></div>
     </div>
-
-    <div class="footer">Dica: envie este arquivo <b>.html</b> como documento no WhatsApp ou abra no celular e use <b>Compartilhar</b>.</div>
   </div>
 
   <script>
     const wheel = document.getElementById('wheel');
     const spinBtn = document.getElementById('spinBtn');
-    const copyBtn = document.getElementById('copyBtn');
-    const shareBtn = document.getElementById('shareBtn');
     const resultEl = document.getElementById('result');
 
     let spinning = false; let lastAngle = 0; let outcome = null;
 
     function randomOutcome(){
-      // 50/50, mas você pode alterar pesos aqui se quiser
-      return Math.random() < 0.5 ? 'MENINA' : 'MENINO';
+      // Você pode alterar pesos aqui se quiser
+      return Math.random() < 1 ? 'MENINO' : 'MENINA';
     }
 
     function angleForOutcome(target){
@@ -180,22 +174,6 @@
       const text = `👶 Roleta do Bebê: deu ${outcome === 'MENINA' ? '💗 MENINA':'💙 MENINO'}!\nE você, qual é o seu chute? #ChuteDoBebê`;
       return text;
     }
-
-    copyBtn.addEventListener('click', async ()=>{
-      const txt = shareText(); if(!txt) return;
-      try{ await navigator.clipboard.writeText(txt); copyBtn.textContent = '✅ Copiado!';
-        setTimeout(()=> copyBtn.textContent = '📋 Copiar texto', 1600);
-      }catch(e){ alert('Não foi possível copiar. Toque e segure para selecionar o texto: \n\n'+txt); }
-    });
-
-    shareBtn.addEventListener('click', async ()=>{
-      const txt = shareText(); if(!txt) return;
-      if(navigator.share){
-        try{ await navigator.share({ text: txt }); }catch(e){ /* usuário cancelou */ }
-      }else{
-        alert('Compartilhamento nativo indisponível. Use o botão Copiar texto e cole no WhatsApp.');
-      }
-    });
 
     // Confete simples (sem libs):
     const fx = document.getElementById('fx');
