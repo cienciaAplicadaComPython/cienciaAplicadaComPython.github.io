@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roleta do Bebê — Menino ou Menina?</title>
+  <style>
+    :root{
+      --pink:#ff4fa3; /* rosa principal */
+      --blue:#4f9dff; /* azul principal */
+      --bg:#0f1220;   /* fundo escuro elegante */
+      --card:#171a2b; /* cartão */
+      --text:#f5f7ff; /* texto */
+      --muted:#a9b0c6;
+      --accent:#ffd166; /* dourado do botão */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      background: radial-gradient(1200px 700px at 50% -10%, #1b2040, var(--bg));
+      color:var(--text); display:grid; place-items:center; padding:16px;
+    }
+    .card{
+      width:min(520px, 92vw);
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)) , var(--card);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    h1{font-size:clamp(20px, 3.5vw, 26px); margin:0 0 6px}
+    p.subtitle{margin:0 0 16px; color:var(--muted); font-size:14px}
+
+    .arena{display:grid; place-items:center; gap:14px; margin:12px 0 8px}
+
+    .wheel-wrap{ position:relative; width:min(340px, 82vw); aspect-ratio:1; }
+    .wheel{
+      width:100%; height:100%; border-radius:50%;
+      border:10px solid rgba(255,255,255,0.1);
+      background:
+        conic-gradient(
+          var(--pink) 0 15deg,
+          var(--blue) 15deg 30deg,
+          var(--pink) 30deg 45deg,
+          var(--blue) 45deg 60deg,
+          var(--pink) 60deg 75deg,
+          var(--blue) 75deg 90deg,
+          var(--pink) 90deg 105deg,
+          var(--blue) 105deg 120deg,
+          var(--pink) 120deg 135deg,
+          var(--blue) 135deg 150deg,
+          var(--pink) 150deg 165deg,
+          var(--blue) 165deg 180deg,
+          var(--pink) 180deg 195deg,
+          var(--blue) 195deg 210deg,
+          var(--pink) 210deg 225deg,
+          var(--blue) 225deg 240deg,
+          var(--pink) 240deg 255deg,
+          var(--blue) 255deg 270deg,
+          var(--pink) 270deg 285deg,
+          var(--blue) 285deg 300deg,
+          var(--pink) 300deg 315deg,
+          var(--blue) 315deg 330deg,
+          var(--pink) 330deg 345deg,
+          var(--blue) 345deg 360deg
+        );
+      display:grid; place-items:center;
+      transition: transform 5s cubic-bezier(.17,.89,.26,1.1);
+      box-shadow: inset 0 0 30px rgba(0,0,0,.4), 0 12px 30px rgba(0,0,0,.35);
+    }
+    .hub{ position:absolute; inset:0; display:grid; place-items:center; }
+    .hub::after{ content:""; width:26%; aspect-ratio:1; border-radius:50%; background:#101428; border:6px solid rgba(255,255,255,.12); box-shadow: inset 0 0 20px rgba(0,0,0,.5);} 
+
+    .pointer{
+      position:absolute; top:-8px; left:50%; transform:translateX(-50%);
+      width:0; height:0; border-left:12px solid transparent; border-right:12px solid transparent; border-bottom:18px solid var(--accent);
+      filter:drop-shadow(0 2px 4px rgba(0,0,0,.6));
+    }
+
+    .controls{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:8px }
+    button{
+      border:0; padding:12px 16px; border-radius:999px; font-weight:700; cursor:pointer;
+      background:linear-gradient(180deg, var(--accent), #e9b44a); color:#1a1200; letter-spacing:.2px;
+      box-shadow: 0 6px 18px rgba(255,209,102,.35);
+    }
+    button.secondary{
+      background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.18);
+      box-shadow:none
+    }
+    button:active{ transform: translateY(1px) }
+
+    .result{ text-align:center; margin-top:10px; min-height:36px }
+    .badge{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; font-weight:800; letter-spacing:.3px; }
+    .badge.pink{ background:rgba(255,79,163,.14); color:#ffd6eb; border:1px solid rgba(255,79,163,.35) }
+    .badge.blue{ background:rgba(79,157,255,.14); color:#d6e6ff; border:1px solid rgba(79,157,255,.35) }
+
+    .footer { color:var(--muted); font-size:12px; text-align:center; margin-top:6px }
+
+    /* confete canvas cobre tudo mas não bloqueia clique */
+    canvas#fx{ position:fixed; inset:0; pointer-events:none }
+  </style>
+</head>
+<body>
+  <canvas id="fx"></canvas>
+  <div class="card" role="region" aria-label="Roleta do bebê">
+    <h1>Roleta do Bebê 👶✨</h1>
+    <p class="subtitle">Brinque com os amigos no WhatsApp: toque em "Girar roleta" e compartilhe o resultado!</p>
+
+    <div class="arena">
+      <div class="wheel-wrap">
+        <div class="pointer" aria-hidden="true"></div>
+        <div id="wheel" class="wheel" aria-live="polite" aria-label="roleta com segmentos azul e rosa"></div>
+        <div class="hub" aria-hidden="true"></div>
+      </div>
+      <div class="controls">
+        <button id="spinBtn" aria-label="Girar a roleta">🎯 Girar roleta</button>
+        <button id="shareBtn" class="secondary" aria-label="Compartilhar resultado">📤 Compartilhar</button>
+        <button id="copyBtn" class="secondary" aria-label="Copiar texto para WhatsApp">📋 Copiar texto</button>
+      </div>
+      <div id="result" class="result" aria-live="assertive"></div>
+    </div>
+
+    <div class="footer">Dica: envie este arquivo <b>.html</b> como documento no WhatsApp ou abra no celular e use <b>Compartilhar</b>.</div>
+  </div>
+
+  <script>
+    const wheel = document.getElementById('wheel');
+    const spinBtn = document.getElementById('spinBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const shareBtn = document.getElementById('shareBtn');
+    const resultEl = document.getElementById('result');
+
+    let spinning = false; let lastAngle = 0; let outcome = null;
+
+    function randomOutcome(){
+      // 50/50, mas você pode alterar pesos aqui se quiser
+      return Math.random() < 0.5 ? 'MENINA' : 'MENINO';
+    }
+
+    function angleForOutcome(target){
+      // Ponteiro está no topo (0deg). Partes rosa começam em 0-15deg, alternando a cada 15deg.
+      // Escolhemos um segmento aleatório do conjunto condizente com o resultado.
+      const segments = 24; // 24 segmentos de 15 graus
+      let valid = [];
+      for(let i=0;i<segments;i++){
+        const isPink = i % 2 === 0; // pares rosa, ímpares azul
+        const label = isPink ? 'MENINA' : 'MENINO';
+        if(label === target) valid.push(i);
+      }
+      const pick = valid[Math.floor(Math.random()*valid.length)];
+      const segSize = 360/segments; // 15
+      // centro do segmento
+      const base = pick*segSize + segSize/2;
+      // somar voltas completas grandes para efeito dramático
+      const extraTurns = 5 + Math.floor(Math.random()*3); // 5-7 voltas
+      return extraTurns*360 + (360 - base); // 360-base para alinhar centro do segmento ao ponteiro superior
+    }
+
+    function setBadge(label){
+      const isGirl = label === 'MENINA';
+      resultEl.innerHTML = `<span class="badge ${isGirl? 'pink':'blue'}">${isGirl? '💗 MENINA':'💙 MENINO'}</span>`;
+    }
+
+    spinBtn.addEventListener('click', ()=>{
+      if(spinning) return;
+      spinning = true; outcome = randomOutcome(); setBadge('...');
+      const targetAngle = angleForOutcome(outcome);
+      lastAngle += targetAngle; // acumula para não resetar e bugar a transição
+      wheel.style.transform = `rotate(${lastAngle}deg)`;
+    });
+
+    wheel.addEventListener('transitionend', ()=>{
+      if(!spinning) return;
+      spinning = false;
+      setBadge(outcome);
+      confettiBurst(outcome === 'MENINA' ? '#ff4fa3' : '#4f9dff');
+    });
+
+    function shareText(){
+      if(!outcome){ alert('Gire a roleta primeiro!'); return; }
+      const text = `👶 Roleta do Bebê: deu ${outcome === 'MENINA' ? '💗 MENINA':'💙 MENINO'}!\nE você, qual é o seu chute? #ChuteDoBebê`;
+      return text;
+    }
+
+    copyBtn.addEventListener('click', async ()=>{
+      const txt = shareText(); if(!txt) return;
+      try{ await navigator.clipboard.writeText(txt); copyBtn.textContent = '✅ Copiado!';
+        setTimeout(()=> copyBtn.textContent = '📋 Copiar texto', 1600);
+      }catch(e){ alert('Não foi possível copiar. Toque e segure para selecionar o texto: \n\n'+txt); }
+    });
+
+    shareBtn.addEventListener('click', async ()=>{
+      const txt = shareText(); if(!txt) return;
+      if(navigator.share){
+        try{ await navigator.share({ text: txt }); }catch(e){ /* usuário cancelou */ }
+      }else{
+        alert('Compartilhamento nativo indisponível. Use o botão Copiar texto e cole no WhatsApp.');
+      }
+    });
+
+    // Confete simples (sem libs):
+    const fx = document.getElementById('fx');
+    const ctx = fx.getContext('2d');
+    let confetti = [];
+    function resize(){ fx.width = innerWidth; fx.height = innerHeight }
+    addEventListener('resize', resize); resize();
+
+    function confettiBurst(color){
+      const N = 150;
+      for(let i=0;i<N;i++){
+        confetti.push({
+          x: innerWidth/2, y: 80, // perto do topo
+          vx: (Math.random()*2-1)*6,
+          vy: Math.random()*-6 - 4,
+          g: 0.18 + Math.random()*0.12,
+          r: 2 + Math.random()*3,
+          a: 1,
+          hue: color,
+          life: 140 + Math.random()*80
+        });
+      }
+    }
+
+    function loop(){
+      ctx.clearRect(0,0,fx.width,fx.height);
+      for(let i=confetti.length-1;i>=0;i--){
+        const p = confetti[i];
+        p.vy += p.g; p.x += p.vx; p.y += p.vy; p.life -= 1; p.a = Math.max(0, p.life/220);
+        ctx.globalAlpha = p.a; ctx.fillStyle = p.hue; 
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+        if(p.life<=0 || p.y>fx.height+20) confetti.splice(i,1);
+      }
+      requestAnimationFrame(loop);
+    }
+    loop();
+
+    // Acessibilidade: tecla Enter/Space no botão principal
+    spinBtn.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); spinBtn.click(); }});
+  </script>
+</body>
+</html>
