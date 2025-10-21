@@ -103,7 +103,7 @@
   <canvas id="fx"></canvas>
   <div class="card" role="region" aria-label="Roleta do bebê">
     <h1>Roleta do Bebê 👶👧</h1>
-    <p class="subtitle">Toque em "Girar roleta" e compartilhe o resultado!</p>
+    <p class="subtitle">Toque em "Girar roleta"!</p>
 
     <div class="arena">
       <div class="wheel-wrap">
@@ -127,7 +127,7 @@
 
     function randomOutcome(){
       // Você pode alterar pesos aqui se quiser
-      return Math.random() < 1 ? 'MENINO' : 'MENINA';
+      return Math.random() < 0.1 ? 'MENINO' : 'MENINA';
     }
 
     function angleForOutcome(target){
